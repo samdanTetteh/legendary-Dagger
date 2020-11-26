@@ -1,3 +1,4 @@
+include ':repository'
 include ':githubApi'
 include ':app'
 rootProject.name = "DI"
