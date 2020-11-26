@@ -40,7 +40,12 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
 
+    //Dagger Core
     implementation deps.dagger.core
+    
+    //Truth
+    testImplementation deps.truth
+
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
