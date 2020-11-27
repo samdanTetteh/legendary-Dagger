@@ -26,6 +26,8 @@ ext.versions = [
         "minSdk"    : 21,
         "targetSdk" : 30,
         "dagger"    : "2.29.1",
+        "recyclerview" : "1.1.0",
+        "recyclerview_selection" : "1.1.0-rc03",
         "truth"     : "1.1"
 ]
 
@@ -34,6 +36,8 @@ ext.deps = [
                 "core"    : "com.google.dagger:dagger:${versions.dagger}",
                 "compiler": "com.google.dagger:dagger-compiler:${versions.dagger}"
         ],
+        "recyclerview" : "androidx.recyclerview:recyclerview:${versions.recyclerview}",
+        "recyclerview_selection" : "androidx.recyclerview:recyclerview-selection:${versions.recyclerview_selection}",
         "truth" : "com.google.truth:truth:${versions.truth}"
 ]
 
