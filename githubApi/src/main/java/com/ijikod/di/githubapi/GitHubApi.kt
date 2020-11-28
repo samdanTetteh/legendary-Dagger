@@ -20,7 +20,8 @@ class MockGitHubApi @Inject constructor() : GitHubApi {
                 description = "Developer from Ghana",
                 owner = UserApiModel(id= 1L, login = "Dagger"),
                 stargazersCount = 1,
-                forksCount = 1,
+                forkCount = 1,
+                starCount = 1,
                 contributorsUrl = "",
                 createdDate = "1/01/2021",
                 updatedDate =  "1/02/2021"
@@ -31,7 +32,8 @@ class MockGitHubApi @Inject constructor() : GitHubApi {
                 description = "Developer from Nigeria",
                 owner = UserApiModel(id= 1L, login = "Dagger"),
                 stargazersCount = 1,
-                forksCount = 1,
+                forkCount = 1,
+                starCount = 1,
                 contributorsUrl = "",
                 createdDate = "1/01/2021",
                 updatedDate =  "1/02/2021"
