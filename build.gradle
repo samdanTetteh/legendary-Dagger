@@ -28,6 +28,7 @@ ext.versions = [
         "dagger"    : "2.29.1",
         "recyclerview" : "1.1.0",
         "recyclerview_selection" : "1.1.0-rc03",
+        "constraintlayout" : "2.0.4",
         "truth"     : "1.1"
 ]
 
@@ -38,6 +39,7 @@ ext.deps = [
         ],
         "recyclerview" : "androidx.recyclerview:recyclerview:${versions.recyclerview}",
         "recyclerview_selection" : "androidx.recyclerview:recyclerview-selection:${versions.recyclerview_selection}",
+        "constraintlayout" : "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}",
         "truth" : "com.google.truth:truth:${versions.truth}"
 ]
 

@@ -46,7 +46,9 @@ dependencies {
     implementation deps.recyclerview_selection
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-
+    // Constraint Layout
+    implementation deps.constraintlayout
+    
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
