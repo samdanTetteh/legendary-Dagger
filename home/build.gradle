@@ -47,16 +47,16 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
 
     // Recycler View
-    implementation deps.recyclerview
-    implementation deps.recyclerview_selection
+    implementation deps.androidx.recyclerview
+    implementation deps.androidx.recyclerview_selection
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // Constraint Layout
-    implementation deps.constraintlayout
+    implementation deps.androidx.constraintlayout
 
     // Lifecycle
-    implementation deps.viewmodel
-    implementation deps.livedata
+    implementation deps.androidx.viewmodel
+    implementation deps.androidx.livedata
 
     //dagger
     implementation deps.dagger.core

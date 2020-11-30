@@ -38,11 +38,13 @@ ext.deps = [
                 "core"    : "com.google.dagger:dagger:${versions.dagger}",
                 "compiler": "com.google.dagger:dagger-compiler:${versions.dagger}"
         ],
-        "recyclerview" : "androidx.recyclerview:recyclerview:${versions.recyclerview}",
-        "recyclerview_selection" : "androidx.recyclerview:recyclerview-selection:${versions.recyclerview_selection}",
-        "constraintlayout" : "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}",
-        "viewmodel" : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle_version}",
-        "livedata" : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycle_version}",
+        "androidx" : [
+                "recyclerview" : "androidx.recyclerview:recyclerview:${versions.recyclerview}",
+                "recyclerview_selection" : "androidx.recyclerview:recyclerview-selection:${versions.recyclerview_selection}",
+                "constraintlayout" : "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}",
+                "viewmodel" : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle_version}",
+                "livedata" : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycle_version}"
+        ],
         "truth" : "com.google.truth:truth:${versions.truth}"
 ]
 
