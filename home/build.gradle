@@ -63,6 +63,11 @@ dependencies {
     kapt deps.dagger.compiler
 
     testImplementation 'junit:junit:4.+'
+
+    //arch testing
+    testImplementation deps.androidx.archTesting
+    testImplementation deps.truth
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

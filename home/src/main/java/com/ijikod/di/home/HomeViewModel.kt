@@ -11,7 +11,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(private val appRepository: AppRepository) : ViewModel() {
 
     private val _viewState = MutableLiveData<HomeViewState>(HomeViewStateLoading)
-    private val viewStateUpdates: LiveData<HomeViewState> = _viewState
+    val viewStateUpdates: LiveData<HomeViewState> = _viewState
 
     init {
         val topRepos = appRepository.getTopGitHubRepos()

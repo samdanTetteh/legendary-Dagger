@@ -30,7 +30,8 @@ ext.versions = [
         "recyclerview_selection" : "1.1.0-rc03",
         "constraintlayout" : "2.0.4",
         "lifecycle_version" : "2.2.0",
-        "truth"     : "1.1"
+        "arch" : "2.1.0",
+        "truth" : "1.1"
 ]
 
 ext.deps = [
@@ -39,6 +40,7 @@ ext.deps = [
                 "compiler": "com.google.dagger:dagger-compiler:${versions.dagger}"
         ],
         "androidx" : [
+                "archTesting" : "androidx.arch.core:core-testing:${versions.arch}",
                 "recyclerview" : "androidx.recyclerview:recyclerview:${versions.recyclerview}",
                 "recyclerview_selection" : "androidx.recyclerview:recyclerview-selection:${versions.recyclerview_selection}",
                 "constraintlayout" : "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}",

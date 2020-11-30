@@ -14,7 +14,8 @@ val FAKE_REPO =
         description = "Developer from Ghana",
         owner = UserApiModel(id = 1L, login = "Dagger"),
         stargazersCount = 1,
-        forksCount = 1,
+        forkCount = 1,
+        starCount = 1,
         contributorsUrl = "",
         createdDate = "1/01/2021",
         updatedDate = "1/02/2021"
@@ -32,7 +33,7 @@ class AppRepositoryTest {
     }
 
     @Test
-    fun `check_successful_query`(){
+    fun `check_successful_query`() {
         val topReps = appRepository.getTopGitHubRepos()
 
         assertThat(topReps.size).isEqualTo(2)
@@ -45,6 +46,4 @@ private class FakeGitHubApi : GitHubApi {
     override fun getTopRepositories(): List<RepoApiModel> {
         return listOf(FAKE_REPO, FAKE_REPO)
     }
-
-
 }
