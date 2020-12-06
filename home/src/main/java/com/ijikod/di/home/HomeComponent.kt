@@ -23,5 +23,4 @@ fun HomeFragment.inject() {
     getComponent {
         DaggerHomeComponent.factory().create(requireContext().applicationDeps())
     }.inject(this)
-
 }

@@ -6,16 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ijikod.di.di.viewmodel.AppViewModelFactory
 import com.ijikod.di.home.databinding.ScreenHomeBinding
+import com.ijikod.di.home.list.HomeRepoAdapter
 import javax.inject.Inject
 
 class HomeFragment : Fragment() {
 
-    @Inject lateinit var appViewModelFactory: AppViewModelFactory
+    @Inject
+    lateinit var appViewModelFactory: AppViewModelFactory
 
-    private val homeViewModule : HomeViewModel by lazy {
+    private val homeViewModule: HomeViewModel by lazy {
         ViewModelProvider(this, appViewModelFactory)[HomeViewModel::class.java]
     }
 
@@ -31,6 +36,58 @@ class HomeFragment : Fragment() {
     ): View? {
         val binding = ScreenHomeBinding.inflate(inflater, container, false)
 
+        setUpRecyclerView(binding)
+
+        observerState(binding)
+
         return binding.root
     }
+
+
+    private fun setUpRecyclerView(binding: ScreenHomeBinding) {
+        binding.repoList.apply {
+            adapter = HomeRepoAdapter()
+            layoutManager = LinearLayoutManager(context)
+            addItemDecoration(
+                DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            )
+        }
+    }
+
+
+    private fun observerState(binding: ScreenHomeBinding) {
+        homeViewModule.viewStateUpdates.observe(viewLifecycleOwner, Observer { state ->
+            when (state) {
+                is HomeViewStateLoading -> handleLoadingState(binding)
+                is HomeViewSateLoaded -> handleLoadedState(state, binding)
+                is HomeViewStateError -> handleErrorState(state, binding)
+            }
+        })
+    }
+
+    private fun handleErrorState(state: HomeViewStateError, binding: ScreenHomeBinding) {
+        binding.loadingIndicator.visibility = View.GONE
+        binding.repoList.visibility = View.GONE
+        binding.errorTextView.visibility = View.VISIBLE
+
+        binding.errorTextView.text = state.message
+    }
+
+    private fun handleLoadedState(state: HomeViewSateLoaded, binding: ScreenHomeBinding) {
+        binding.loadingIndicator.visibility = View.GONE
+        binding.repoList.visibility = View.VISIBLE
+        binding.errorTextView.visibility = View.GONE
+
+        (binding.repoList.adapter as HomeRepoAdapter).setRepoItems(state.repos)
+    }
+
+    private fun handleLoadingState(binding: ScreenHomeBinding) {
+        binding.loadingIndicator.visibility = View.VISIBLE
+        binding.repoList.visibility = View.GONE
+        binding.errorTextView.visibility = View.GONE
+    }
+
+
+
+
 }

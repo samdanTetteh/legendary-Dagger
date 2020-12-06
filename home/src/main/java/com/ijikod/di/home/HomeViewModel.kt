@@ -8,7 +8,7 @@ import com.ijikod.di.repository.AppRepository
 import javax.inject.Inject
 
 @ScreenScope
-class HomeViewModel @Inject constructor(private val appRepository: AppRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(appRepository: AppRepository) : ViewModel() {
 
     private val _viewState = MutableLiveData<HomeViewState>(HomeViewStateLoading)
     val viewStateUpdates: LiveData<HomeViewState> = _viewState
