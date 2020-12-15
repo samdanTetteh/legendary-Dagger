@@ -16,7 +16,7 @@ class ComponentViewModel : ViewModel() {
 fun <T> ViewModelStoreOwner.getComponent(createComponent: () -> T): T {
     val viewModel = ViewModelProvider(this)[ComponentViewModel::class.java]
     if (viewModel.component == null) {
-        viewModel.component = createComponent
+        viewModel.component = createComponent()
     }
 
     @Suppress("UNCHECKED_CAST")
