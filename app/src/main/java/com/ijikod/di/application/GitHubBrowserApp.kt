@@ -1,6 +1,7 @@
 package com.ijikod.di.application
 
 import android.app.Application
+import com.ijikod.appcomponent.DaggerApplicationComponent
 import com.ijikod.di.appdeps.ApplicationDeps
 import com.ijikod.di.appdeps.HasApplicationDeps
 

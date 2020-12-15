@@ -1,4 +1,4 @@
-package com.ijikod.di.application
+package com.ijikod.appcomponent
 
 import android.content.Context
 import com.ijikod.di.appdeps.ApplicationDeps
