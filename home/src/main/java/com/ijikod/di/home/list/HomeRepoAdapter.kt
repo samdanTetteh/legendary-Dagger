@@ -13,7 +13,7 @@ class HomeRepoAdapter : RecyclerView.Adapter<HomeRepoAdapter.ReposItemViewHolder
 
 
         fun bind(repoItem: RepoItem) {
-            binding.appName.text = repoItem.name
+            binding.repoName.text = repoItem.name
             binding.appDecription.text = repoItem.description
             binding.forkCount.text = repoItem.forkCount.toString()
             binding.starCount.text = repoItem.startCount.toString()
