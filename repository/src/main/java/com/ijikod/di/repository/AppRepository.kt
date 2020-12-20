@@ -11,7 +11,7 @@ class AppRepository @Inject constructor(
 ) {
 
     suspend fun getTopGitHubRepos(): List<RepoApiModel> {
-        return gitHubApi.getTopRepositories()
+        return gitHubApi.getTopRepositories().items
     }
 
 }
