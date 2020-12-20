@@ -11,7 +11,7 @@ class FakeGitHubApi @Inject constructor() : GitHubApi {
     var repos = listOf<RepoApiModel>()
 
 
-    override fun getTopRepositories(): List<RepoApiModel> {
+    override suspend fun getTopRepositories(): List<RepoApiModel> {
         return repos
     }
 

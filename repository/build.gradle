@@ -42,11 +42,16 @@ dependencies {
 
     //Dagger Core
     implementation deps.dagger.core
+
+    // Coroutines
+    implementation deps.coroutines.android
+
     
     //Truth
     testImplementation deps.truth
 
-
+    testImplementation deps.coroutines.test
+    testImplementation project(":testing:app")
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

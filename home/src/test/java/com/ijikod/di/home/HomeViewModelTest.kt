@@ -6,7 +6,10 @@ import com.ijikod.di.githubapi.model.RepoApiModel
 import com.ijikod.di.githubapi.model.UserApiModel
 import com.ijikod.di.repository.AppRepository
 import com.google.common.truth.Truth.assertThat
+import com.ijikod.app.githubapi.FakeGitHubApi
 import com.ijikod.di.home.list.RepoItem
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.test.setMain
 import org.junit.Before
 import org.junit.Rule
 
@@ -37,7 +40,10 @@ class HomeViewModelTest {
 
     @Before
     fun setUp() {
-        val appRepository = AppRepository(FakeGitHubApi())
+        Dispatchers.setMain(Dispatchers.Unconfined)
+        val appRepository = AppRepository(FakeGitHubApi().apply {
+            repos = listOf(FAKE_REPO, FAKE_REPO)
+        })
         viewStateValues = mutableListOf()
 
         viewModel = HomeViewModel(appRepository)
@@ -52,12 +58,5 @@ class HomeViewModelTest {
         ) )
 
         assertThat(viewStateValues[0]).isEqualTo(expectedState)
-    }
-}
-
-
-private class FakeGitHubApi : GitHubApi {
-    override fun getTopRepositories(): List<RepoApiModel> {
-        return listOf(FAKE_REPO, FAKE_REPO)
     }
 }

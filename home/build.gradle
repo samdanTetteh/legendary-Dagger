@@ -64,6 +64,11 @@ dependencies {
     implementation deps.dagger.core
     kapt deps.dagger.compiler
 
+    // Coroutines
+    implementation deps.coroutines.android
+
+    testImplementation deps.coroutines.test
+    testImplementation project(":testing:app")
     testImplementation 'junit:junit:4.+'
 
     //arch testing
