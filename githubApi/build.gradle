@@ -44,6 +44,7 @@ dependencies {
 
     //Dagger
     implementation deps.dagger.core
+    kapt deps.dagger.compiler
 
     //retrofit
     api deps.retrofit.core
