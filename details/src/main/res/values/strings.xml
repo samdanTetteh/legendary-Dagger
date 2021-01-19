@@ -2,4 +2,5 @@
 <resources>
     <string name="created_txt">Created</string>
     <string name="contributors_txt">Contributors</string>
+    <string name="contributor">contributor</string>
 </resources>
