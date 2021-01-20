@@ -98,7 +98,7 @@
         tools:layout_editor_absoluteX="41dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/contributorList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -111,7 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView"
-        app:layout_constraintTop_toTopOf="@+id/recyclerView" />
+        app:layout_constraintEnd_toEndOf="@+id/contributorList"
+        app:layout_constraintStart_toStartOf="@+id/contributorList"
+        app:layout_constraintTop_toTopOf="@+id/contributorList" />
 </androidx.constraintlayout.widget.ConstraintLayout>
