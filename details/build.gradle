@@ -14,7 +14,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.ijikod.app.GitHubBrowserTestRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -69,6 +69,9 @@ dependencies {
     testImplementation deps.coroutines.test
     testImplementation deps.truth
     testImplementation project(":testing:app")
+
+    androidTestImplementation deps.androidx.fragmenttesting
+    androidTestImplementation project(":testing:app")
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
