@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
 
     private fun setUpRecyclerView(binding: ScreenHomeBinding) {
         binding.repoList.apply {
-            adapter = HomeRepoAdapter()
+            adapter = HomeRepoAdapter(homeViewModule::onRepoSelected)
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(
                 DividerItemDecoration(context, DividerItemDecoration.VERTICAL)

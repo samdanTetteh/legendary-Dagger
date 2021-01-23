@@ -7,7 +7,10 @@ import com.ijikod.di.githubapi.model.UserApiModel
 import com.ijikod.di.repository.AppRepository
 import com.google.common.truth.Truth.assertThat
 import com.ijikod.app.githubapi.FakeGitHubApi
+import com.ijikod.app.navigation.FakeScreenNavigator
 import com.ijikod.di.home.list.RepoItem
+import com.ijikod.navigation.DetailsScreen
+import com.ijikod.navigation.ScreenNavigator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.setMain
 import org.junit.Before
@@ -36,6 +39,7 @@ class HomeViewModelTest {
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var viewStateValues : MutableList<HomeViewState>
+    private lateinit var screenNavigator: FakeScreenNavigator
 
     @Before
     fun setUp() {
@@ -45,7 +49,7 @@ class HomeViewModelTest {
         })
         viewStateValues = mutableListOf()
 
-        viewModel = HomeViewModel(appRepository)
+        viewModel = HomeViewModel(appRepository, screenNavigator)
         viewModel.viewStateUpdates.observeForever { viewStateValues.add(it)}
     }
 
@@ -57,5 +61,15 @@ class HomeViewModelTest {
         ) )
 
         assertThat(viewStateValues[0]).isEqualTo(expectedState)
+    }
+
+    @Test
+    fun `repoSelected calls goToScreen`(){
+        viewModel.onRepoSelected(FAKE_REPO.owner.login, FAKE_REPO.name)
+
+        val expectedScreen = DetailsScreen(FAKE_REPO.owner.login, FAKE_REPO.name)
+
+        assertThat(screenNavigator.openedScreens.size).isEqualTo(1)
+        assertThat(screenNavigator.openedScreens[0]).isEqualTo(expectedScreen)
     }
 }

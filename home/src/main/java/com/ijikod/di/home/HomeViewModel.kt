@@ -6,11 +6,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ijikod.di.di.scope.ScreenScope
 import com.ijikod.di.repository.AppRepository
+import com.ijikod.navigation.DetailsScreen
+import com.ijikod.navigation.ScreenNavigator
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @ScreenScope
-class HomeViewModel @Inject constructor(appRepository: AppRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(
+    private val appRepository: AppRepository,
+    private val screenNavigator: ScreenNavigator
+) : ViewModel() {
 
     private val _viewState = MutableLiveData<HomeViewState>(HomeViewStateLoading)
     val viewStateUpdates: LiveData<HomeViewState> = _viewState
@@ -25,4 +30,10 @@ class HomeViewModel @Inject constructor(appRepository: AppRepository) : ViewMode
             )
         }
     }
+
+
+    fun onRepoSelected(repoOwner: String, repoName: String){
+        screenNavigator.goToScreen(DetailsScreen(repoOwner, repoName))
+    }
+
 }
