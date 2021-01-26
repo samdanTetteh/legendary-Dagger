@@ -37,7 +37,7 @@ class PowerAdapter (
     override fun getItemCount(): Int = data.size
 
     override fun getItemViewType(position: Int): Int {
-        val renderer = renderers[data[position].javaClass].get()
+        val renderer = renderers[data[position].javaClass]?.get()
             ?: error("No renderer for: ${data[position].javaClass}")
 
         val viewType = renderer.layoutRes()
