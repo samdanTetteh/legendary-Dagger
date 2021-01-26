@@ -7,12 +7,14 @@ import java.lang.NullPointerException
 sealed class Screen
 data class DetailsScreen (val repoOwner: String, val repoName: String) : Screen()
 
+
 interface ScreenNavigator {
+
     fun goToScreen(screen: Screen)
 }
 
-
 interface NavigationDeps {
+
     fun screenNavigation() : ScreenNavigator
 }
 
@@ -25,7 +27,7 @@ fun Activity.navigationDeps(): NavigationDeps {
         ?: applicationContext.getSystemService(NAVIGATION_DEPS_SERVICE) as? NavigationDeps
 
     return navigationDeps ?: throw NullPointerException (
-        "Activity must override getSystemService and provide NagivationDeps " +
+        "Activity must override getSystemService and provide NavigationDeps " +
                 " for service name: $NAVIGATION_DEPS_SERVICE"
     )
 }
