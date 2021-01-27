@@ -2,6 +2,8 @@ package com.ijikod.di.home
 
 import androidx.lifecycle.ViewModel
 import com.ijikod.di.di.viewmodel.ViewModelKey
+import com.ijikod.di.home.list.NumberItem
+import com.ijikod.di.home.list.NumberItemRenderer
 import com.ijikod.di.home.list.RepoItem
 import com.ijikod.di.home.list.RepoItemRenderer
 import com.ijikod.poweradapter.ItemRenderer
@@ -23,5 +25,10 @@ interface HomeModule {
     @IntoMap
     @RendererKey(RepoItem::class)
     fun bindRepoItemRenderer(repoItemRenderer: RepoItemRenderer): ItemRenderer<out RecyclerItem>
+
+    @Binds
+    @IntoMap
+    @RendererKey(NumberItem::class)
+    fun bindNumberItemRenderer(numberItemRenderer: NumberItemRenderer): ItemRenderer<out RecyclerItem>
 
 }

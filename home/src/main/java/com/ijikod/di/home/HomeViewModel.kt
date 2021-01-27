@@ -5,9 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ijikod.di.di.scope.ScreenScope
+import com.ijikod.di.home.list.NumberItem
 import com.ijikod.di.repository.AppRepository
 import com.ijikod.navigation.DetailsScreen
 import com.ijikod.navigation.ScreenNavigator
+import com.ijikod.poweradapter.RecyclerItem
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,16 +25,18 @@ class HomeViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val topRepos = appRepository.getTopGitHubRepos()
-            _viewState.value = HomeViewSateLoaded(
-                repos = topRepos.map {
-                    it.toRepoItem()
-                }
-            )
+            val listItems = mutableListOf<RecyclerItem>()
+            topRepos.forEachIndexed { index, repoApiModel ->
+                listItems.add(NumberItem(number = index + 1))
+                listItems.add(repoApiModel.toRepoItem())
+            }
+
+            _viewState.value = HomeViewSateLoaded(listItems)
         }
     }
 
 
-    fun onRepoSelected(repoOwner: String, repoName: String){
+    fun onRepoSelected(repoOwner: String, repoName: String) {
         screenNavigator.goToScreen(DetailsScreen(repoOwner, repoName))
     }
 
