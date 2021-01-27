@@ -13,12 +13,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ijikod.di.di.viewmodel.AppViewModelFactory
 import com.ijikod.di.home.databinding.ScreenHomeBinding
 import com.ijikod.di.home.list.HomeRepoAdapter
+import com.ijikod.poweradapter.ItemRenderer
+import com.ijikod.poweradapter.PowerAdapter
+import com.ijikod.poweradapter.PowerAdapterViewHolder
+import com.ijikod.poweradapter.RecyclerItem
 import javax.inject.Inject
+import javax.inject.Provider
 
 class HomeFragment : Fragment() {
 
     @Inject
     lateinit var appViewModelFactory: AppViewModelFactory
+
+    @Inject
+    lateinit var itemRenderers: Map<Class<out RecyclerItem>, @JvmSuppressWildcards Provider<ItemRenderer<out RecyclerItem>>>
 
     private val homeViewModule: HomeViewModel by lazy {
         ViewModelProvider(this, appViewModelFactory)[HomeViewModel::class.java]
@@ -46,7 +54,7 @@ class HomeFragment : Fragment() {
 
     private fun setUpRecyclerView(binding: ScreenHomeBinding) {
         binding.repoList.apply {
-            adapter = HomeRepoAdapter(homeViewModule::onRepoSelected)
+            adapter = PowerAdapter(itemRenderers)
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(
                 DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
@@ -78,7 +86,7 @@ class HomeFragment : Fragment() {
         binding.repoList.visibility = View.VISIBLE
         binding.errorTextView.visibility = View.GONE
 
-        (binding.repoList.adapter as HomeRepoAdapter).setRepoItems(state.repos)
+        (binding.repoList.adapter as PowerAdapter).setData(state.repos)
     }
 
     private fun handleLoadingState(binding: ScreenHomeBinding) {
