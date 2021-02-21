@@ -1,6 +1,5 @@
 package com.ijikod.di
 
-import com.ijikod.di.application.DaggerMainActivityComponent
 import com.ijikod.di.di.component.getComponent
 import com.ijikod.di.di.scope.ActivityScope
 import com.ijikod.navigation.NavigationDeps
